@@ -1,23 +1,23 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+このファイルは、このリポジトリで作業する際の Claude Code (claude.ai/code) 向けガイダンスです。
 
-## Project Overview
+## プロジェクト概要
 
-task-board is a task board application. The technology stack has not been decided yet — update this section once the stack (frontend/backend framework, language, database, etc.) is chosen.
+task-board はタスク管理ボードアプリケーションです。技術スタックはまだ未定です。フロントエンド/バックエンドのフレームワーク、言語、データベースなどが決まり次第、このセクションを更新してください。
 
-## Git Workflow Rules
+## Git運用ルール
 
-- **Every time code is changed, push the change to GitHub.** Do not leave changes committed only locally — after editing code, always run through the following sequence:
-  1. `git add <changed files>` (avoid `git add -A`/`git add .` unless you have checked `git status` first)
-  2. `git commit -m "..."` with a concise message describing the change
-  3. `git push` to the `origin` remote (`https://github.com/nekomaru9/task-board.git`) immediately after committing
-- Prefer small, frequent commits over large batched ones — each logical change should be committed and pushed on its own.
-- Never use `git push --force` on shared branches (e.g. `main`) without explicit user approval.
-- Never use `git commit --amend` on commits that have already been pushed.
-- Do not skip git hooks (`--no-verify`) unless explicitly instructed by the user.
-- Run `git status` before staging to confirm exactly what is being committed, and double-check for secrets (`.env`, credentials, keys) before pushing.
+- **コードを変更するたびに、その変更をGitHubにプッシュすること。** 変更をローカルのコミットだけにとどめず、コードを編集したら必ず以下の手順を行う。
+  1. `git add <変更したファイル>` (`git status` で内容を確認してから行う。`git add -A`/`git add .` は避ける)
+  2. `git commit -m "..."` で変更内容を簡潔に説明するメッセージを付けてコミットする
+  3. コミット後は直ちに `git push` で `origin` リモート(`https://github.com/nekomaru9/task-board.git`)へプッシュする
+- 大きな変更をまとめてコミットするより、小さく頻繁にコミット・プッシュすることを優先する。各論理的な変更ごとにコミット・プッシュを行う。
+- `main` などの共有ブランチに対して、ユーザーの明示的な承認なしに `git push --force` を使用しない。
+- 既にプッシュ済みのコミットに対して `git commit --amend` を使用しない。
+- ユーザーから明示的に指示がない限り、Git hooks をスキップ(`--no-verify`)しない。
+- ステージングする前に `git status` で何がコミットされるかを確認し、プッシュ前に `.env` や認証情報、鍵などの機密情報が含まれていないか必ず確認する。
 
-## Development Notes
+## 開発メモ
 
-This section will be filled in as the project's tooling, build steps, and conventions are established (package manager, test runner, lint/format commands, etc.).
+パッケージマネージャー、テストランナー、lint/formatコマンドなど、プロジェクトのツールチェーン・ビルド手順・規約が定まり次第、このセクションに追記していく。
