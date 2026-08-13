@@ -4,7 +4,32 @@
 
 ## プロジェクト概要
 
-task-board はタスク管理ボードアプリケーションです。技術スタックはまだ未定です。フロントエンド/バックエンドのフレームワーク、言語、データベースなどが決まり次第、このセクションを更新してください。
+task-board はタスク管理ボードアプリケーションです。テキスト入力でのタスク追加、チェックボックスによる完了・未完了の切り替え、削除、完了済みタスクのグレー表示に対応しています。タスクはブラウザの localStorage に保存され、ページをリロードしても消えません。
+
+## デプロイ先
+
+https://nekomaru9.github.io/task-board/
+
+`main` ブランチへのプッシュをトリガーに `.github/workflows/deploy.yml` が `npm run build` を実行し、GitHub Pages へ自動デプロイする。
+
+## 技術スタック
+
+- フレームワーク: React 19
+- ビルドツール: Vite 8
+- 言語: TypeScript
+- Lint: oxlint (`npm run lint`)
+- テスト: 未導入
+- 状態管理: React の `useState` / `useEffect` のみ(外部の状態管理ライブラリは未使用)
+- データ永続化: ブラウザの localStorage
+- デプロイ: GitHub Actions + GitHub Pages
+
+## コンポーネントの命名規約
+
+- コンポーネントファイルは `src/components/` 配下に置き、ファイル名はコンポーネント名と一致させる(例: `TaskItem.tsx` → `TaskItem` コンポーネント)
+- コンポーネント名・ファイル名は PascalCase、関数コンポーネントは `function ComponentName(props) { ... }` の形で定義しデフォルトエクスポートする
+- Props の型は `ComponentNameProps` という名前のインターフェースで定義する(例: `TaskItemProps`)
+- ドメインの型(`Task` など)は `src/types.ts` に集約する
+- CSS のクラス名は `ブロック__要素`(BEM 風)とし、コンポーネント単位のプレフィックスを付ける(例: `task-item`, `task-item__label`, `task-item__delete`)。状態を表す修飾子は `--状態名` を付与する(例: `task-item--completed`)
 
 ## Git運用ルール
 
@@ -20,4 +45,8 @@ task-board はタスク管理ボードアプリケーションです。技術ス
 
 ## 開発メモ
 
-パッケージマネージャー、テストランナー、lint/formatコマンドなど、プロジェクトのツールチェーン・ビルド手順・規約が定まり次第、このセクションに追記していく。
+- パッケージマネージャー: npm
+- 開発サーバー起動: `npm run dev`
+- ビルド: `npm run build`
+- 型チェックのみ: `npx tsc -b --noEmit`
+- テストランナー・formatコマンドは未導入。導入し次第このセクションに追記する。
